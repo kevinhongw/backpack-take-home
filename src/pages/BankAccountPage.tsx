@@ -3,7 +3,6 @@ import { Box, Container, Stack } from "@mui/material"
 import { useParams } from "react-router-dom"
 
 import Header from "../components/Header"
-import BankAccount from "../features/bankAccounts/BankAccount"
 import BankAccountInfo from "../features/bankAccounts/BankAccountInfo"
 import BankAccountTransactions from "../features/bankAccounts/BankAccountTransactions"
 

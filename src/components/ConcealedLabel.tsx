@@ -20,7 +20,7 @@ const ConcealedLabel: React.FC<Props> = ({ label, value }) => {
       <Typography variant="label">{label}</Typography>
       <Typography variant="label2">{formattedValue}</Typography>
       <Button variant="text" size="small" onClick={handleToogle}>
-        Show
+        {!show ? "Show" : "Hide"}
       </Button>
     </Stack>
   )
