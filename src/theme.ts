@@ -60,21 +60,21 @@ export const theme = createTheme({
       color: "#333",
     },
     label: {
-      // fontFamily: "Montserrat_",
+      fontFamily: "montserrat",
       fontSize: "14px",
       fontWeight: "300",
     },
     label2: {
-      // fontFamily: "Montserrat_",
+      fontFamily: "montserrat",
       fontSize: "14px",
       fontWeight: "700",
     },
     info: {
-      // fontFamily: "Montserrat_",
+      fontFamily: "montserrat",
       fontSize: "12px",
       fontWeight: "300",
     },
-    // fontFamily: "Montserrat_",
+    fontFamily: "montserrat",
   },
 })
 
