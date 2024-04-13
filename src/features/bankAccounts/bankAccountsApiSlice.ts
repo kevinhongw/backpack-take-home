@@ -45,10 +45,7 @@ export const bankAccountsApiSlice = createApi({
       query: () => `/bank-accounts`,
       transformResponse: (
         response: BackPackApiResponse<"bank_accounts", BankAccount[]>,
-      ) => {
-        console.log(response)
-        return response.data.bank_accounts
-      },
+      ) => response.data.bank_accounts,
     }),
     getBankAccountBalance: build.query<BankAccountBalance, string>({
       query: bankAccountId => `/bank-accounts/${bankAccountId}/balance`,

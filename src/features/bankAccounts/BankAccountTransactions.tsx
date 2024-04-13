@@ -155,7 +155,7 @@ const BankAccountTransactions: React.FC<Props> = ({ bankAccountId }) => {
       >
         <Card>
           {filteredTransaction.map(row => (
-            <>
+            <React.Fragment key={row.id}>
               <Box
                 display={"flex"}
                 alignItems={"flex-end"}
@@ -174,7 +174,7 @@ const BankAccountTransactions: React.FC<Props> = ({ bankAccountId }) => {
                 </Typography>
               </Box>
               <Divider flexItem />
-            </>
+            </React.Fragment>
           ))}
         </Card>
       </Box>
