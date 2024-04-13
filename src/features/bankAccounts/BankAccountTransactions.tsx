@@ -28,30 +28,36 @@ type Filter = {
   maxAmount?: number
 }
 
-const filterTransaction = (transactions: Transaction[], filter: Filter) => {
-  return transactions.filter(transaction => {
-    let shouldFilter = true
-    if (filter.type === "credit" && transaction.amount_in_cents <= 0) {
-      shouldFilter = false
-    }
-    if (filter.type === "debit" && transaction.amount_in_cents > 0) {
-      shouldFilter = false
-    }
-    if (
-      filter.minAmount &&
-      Math.abs(transaction.amount_in_cents) < filter.minAmount * 100
-    ) {
-      shouldFilter = false
-    }
-    if (
-      filter.maxAmount &&
-      Math.abs(transaction.amount_in_cents) > filter.maxAmount * 100
-    ) {
-      shouldFilter = false
-    }
+const filterTransaction = (
+  transactions: Transaction[],
+  filter: Filter,
+  search: string,
+) => {
+  return transactions
+    .filter(transaction => {
+      let shouldFilter = true
+      if (filter.type === "credit" && transaction.amount_in_cents <= 0) {
+        shouldFilter = false
+      }
+      if (filter.type === "debit" && transaction.amount_in_cents > 0) {
+        shouldFilter = false
+      }
+      if (
+        filter.minAmount &&
+        Math.abs(transaction.amount_in_cents) < filter.minAmount * 100
+      ) {
+        shouldFilter = false
+      }
+      if (
+        filter.maxAmount &&
+        Math.abs(transaction.amount_in_cents) > filter.maxAmount * 100
+      ) {
+        shouldFilter = false
+      }
 
-    return shouldFilter
-  })
+      return shouldFilter
+    })
+    .filter(transaction => transaction.description.includes(search))
 }
 
 const BankAccountTransactions: React.FC<Props> = ({ bankAccountId }) => {
@@ -59,18 +65,25 @@ const BankAccountTransactions: React.FC<Props> = ({ bankAccountId }) => {
     bankAccountId ?? skipToken,
   )
   const [filter, setFilter] = useState<Filter>({})
+  const [search, setSearch] = useState<string>("")
 
   const sortedTransactions = [...transactions].sort((a, b) => {
     return (new Date(b.date) as any) - (new Date(a.date) as any)
   })
 
-  const handleSearch = () => {}
+  const handleSearch = (value: string) => {
+    setSearch(value)
+  }
 
   const handleFilter = (filter: Filter) => {
     setFilter(filter)
   }
 
-  const filteredTransaction = filterTransaction(sortedTransactions, filter)
+  const filteredTransaction = filterTransaction(
+    sortedTransactions,
+    filter,
+    search,
+  )
 
   return (
     <Box>

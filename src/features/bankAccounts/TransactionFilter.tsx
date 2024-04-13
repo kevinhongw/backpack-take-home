@@ -30,6 +30,12 @@ const TransactionFilter: React.FC<Props> = ({ onFilter, filter }) => {
     setAnchorEl(null)
   }
 
+  const handleReset = () => {
+    resetForm()
+    onFilter({})
+    setAnchorEl(null)
+  }
+
   const { values, handleChange, handleBlur, handleSubmit, resetForm } =
     useFormik({
       initialValues: {
@@ -111,7 +117,7 @@ const TransactionFilter: React.FC<Props> = ({ onFilter, filter }) => {
                   color="primary"
                   variant="outlined"
                   size="small"
-                  onClick={resetForm}
+                  onClick={handleReset}
                 >
                   Reset
                 </Button>
