@@ -40,6 +40,7 @@ const BankAccountInfo: React.FC<Props> = ({ bankAccountId }) => {
             direction={"row"}
             alignItems={"flex-end"}
             gap={"48px"}
+            flexWrap={"wrap"}
           >
             <Box>
               <Typography variant="h4">
@@ -61,6 +62,7 @@ const BankAccountInfo: React.FC<Props> = ({ bankAccountId }) => {
             gap={"16px"}
             alignItems={"center"}
             marginTop="16px"
+            flexWrap={"wrap"}
           >
             <ConcealedLabel
               label="Account number"

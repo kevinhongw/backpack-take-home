@@ -3,6 +3,7 @@ import { Transaction, useGetTransactionsQuery } from "./bankAccountsApiSlice"
 import { skipToken } from "@reduxjs/toolkit/query"
 import {
   Box,
+  Divider,
   Skeleton,
   Stack,
   Table,
@@ -87,55 +88,96 @@ const BankAccountTransactions: React.FC<Props> = ({ bankAccountId }) => {
 
   return (
     <Box>
-      <Stack direction={"row"} marginBottom="8px" gap="8px">
+      <Stack direction={"row"} marginBottom="8px" gap="8px" flexWrap={"wrap"}>
         <Typography variant="h4">Transactions</Typography>
         <Box flexGrow={1} />
         <SearchInput onSearch={handleSearch} />
         <TransactionFilter onFilter={handleFilter} filter={filter} />
       </Stack>
       {isFetching && <Skeleton width="100%" height="200px" />}
-      <TableContainer component={Card} sx={{ overflow: "auto" }}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell>
-                <strong>Date</strong>
-              </TableCell>
-              <TableCell>
-                <strong>Description</strong>
-              </TableCell>
-              <TableCell>
-                <strong>Type</strong>
-              </TableCell>
-              <TableCell align="right">
-                <strong>Amount</strong>
-              </TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {filteredTransaction.map(row => (
-              <TableRow
-                key={row.id}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-                <TableCell component="th" scope="row">
-                  {row.date}
+      <Box
+        sx={theme => ({
+          [theme.breakpoints.down("sm")]: {
+            display: "none",
+          },
+        })}
+      >
+        <TableContainer component={Card}>
+          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell>
+                  <strong>Date</strong>
                 </TableCell>
-                <TableCell>{row.description}</TableCell>
-                <TableCell>{row.type}</TableCell>
-                <TableCell
-                  align="right"
-                  style={{
-                    color: row.amount_in_cents > 0 ? "#608D64" : "#C44E42",
-                  }}
-                >
-                  {formatCurrency(row.amount_in_cents)}
+                <TableCell>
+                  <strong>Description</strong>
+                </TableCell>
+                <TableCell>
+                  <strong>Type</strong>
+                </TableCell>
+                <TableCell align="right">
+                  <strong>Amount</strong>
                 </TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+            </TableHead>
+            <TableBody>
+              {filteredTransaction.map(row => (
+                <TableRow
+                  key={row.id}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell component="th" scope="row">
+                    {row.date}
+                  </TableCell>
+                  <TableCell>{row.description}</TableCell>
+                  <TableCell>{row.type}</TableCell>
+                  <TableCell
+                    align="right"
+                    style={{
+                      color: row.amount_in_cents > 0 ? "#608D64" : "#C44E42",
+                    }}
+                  >
+                    {formatCurrency(row.amount_in_cents)}
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Box>
+
+      <Box
+        sx={theme => ({
+          [theme.breakpoints.up("sm")]: {
+            display: "none",
+          },
+        })}
+      >
+        <Card>
+          {filteredTransaction.map(row => (
+            <>
+              <Box
+                display={"flex"}
+                alignItems={"flex-end"}
+                justifyContent={"space-between"}
+                padding="16px"
+              >
+                <Stack>
+                  <Typography variant="h6">{row.description}</Typography>
+                  <Typography variant="subtitle1">{row.date}</Typography>
+                  <Typography variant="subtitle1">{row.type}</Typography>
+                </Stack>
+                <Typography
+                  color={row.amount_in_cents > 0 ? "#608D64" : "#C44E42"}
+                >
+                  {formatCurrency(row.amount_in_cents)}
+                </Typography>
+              </Box>
+              <Divider flexItem />
+            </>
+          ))}
+        </Card>
+      </Box>
     </Box>
   )
 }
