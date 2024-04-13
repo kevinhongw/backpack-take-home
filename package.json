@@ -1,9 +1,9 @@
 {
-  "name": "backpack-coding-challenge",
+  "name": "backpack-take-home",
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://kevinhongw.github.io/backpack-coding-challenge",
+  "homepage": "https://kevinhongw.github.io/backpack-take-home",
   "scripts": {
     "dev": "vite",
     "start": "vite",

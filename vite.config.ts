@@ -13,5 +13,5 @@ export default defineConfig({
     setupFiles: "src/setupTests",
     mockReset: true,
   },
-  base: "/backpack-coding-challenge/",
+  base: "/backpack-take-home/",
 })

@@ -2,7 +2,7 @@
 
 ## Demo site
 
-https://kevinhongw.github.io/backpack-coding-challenge
+https://kevinhongw.github.io/backpack-take-home
 
 ## Prompt
 
@@ -29,7 +29,7 @@ Please create a separate repository for this prompt and commit your work as you 
 
 - React
 - Redux-toolkit
-- Rechart
+- formik
 - Material UI
 - Vite
 - Github Page
