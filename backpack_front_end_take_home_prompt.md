@@ -16,18 +16,18 @@ The web application must be build using React. The rest is up to you.
 
 ## Requirements
 
-- [ ]  UI for displaying, concealing, and copying account and routing numbers
-- [ ]  UI for displaying the current and available balance
-- [ ]  UI for displaying transactions
-- [ ]  `README` explaining your design choices and how to run the application
+- [ ] UI for displaying, concealing, and copying account and routing numbers
+- [ ] UI for displaying the current and available balance
+- [ ] UI for displaying transactions
+- [ ] `README` explaining your design choices and how to run the application
 
 ## Extras
 
-- [ ]  Reusable components
-- [ ]  Polished UI and styling
-- [ ]  Filter and search for transactions
-- [ ]  Mobile friendly
-- [ ]  Tests
+- [ ] Reusable components
+- [ ] Polished UI and styling
+- [ ] Filter and search for transactions
+- [ ] Mobile friendly
+- [ ] Tests
 
 ## API
 
@@ -56,6 +56,23 @@ Get an account owner’s bank accounts.
     },
     request_id
 }
+
+{
+    "data": {
+        "bank_accounts": [
+            {
+                "id": "91f371a0-b370-4342-9907-cf26c37d16e2",
+                "created_at": "2024-03-13T05:57:57.186Z",
+                "updated_at": "2024-04-12T05:57:57.186Z",
+                "status": "ACTIVE",
+                "name": "My bank account",
+                "account_number": "999999999999",
+                "routing_number": "111111111"
+            }
+        ]
+    },
+    "request_id": "e6f7fc4b-6d88-4a6d-b604-bd1e177094c5"
+}
 ```
 
 ### `GET /bank-accounts/:bank_account_id/balance`
@@ -74,6 +91,17 @@ Get a bank account’s balance.
         }
     },
     request_id
+}
+
+{
+    "data": {
+        "bank_account_balance": {
+            "bank_account_id": "91f371a0-b370-4342-9907-cf26c37d16e2",
+            "available_balance_in_cents": 1716543,
+            "pending_balance_in_cents": 1789505
+        }
+    },
+    "request_id": "3e1c3c88-39e3-47e3-b819-d7dfde26b2b8"
 }
 ```
 
@@ -100,6 +128,59 @@ Get an account owner’s transactions.
     },
     request_id
 }
+
+{
+    "data": {
+        "transactions": [
+            {
+                "id": "bea3594e-e28c-4412-b708-dca6e8e4b63a",
+                "created_at": "2024-04-16T06:15:57.775Z",
+                "updated_at": "2024-04-16T06:15:57.775Z",
+                "type": "DEPOSIT",
+                "date": "2024-04-16",
+                "description": "Test transaction #5",
+                "amount_in_cents": 34563
+            },
+            {
+                "id": "55d38f7a-b62e-4ca6-a57e-df088492fe93",
+                "created_at": "2024-04-15T06:15:57.775Z",
+                "updated_at": "2024-04-15T06:15:57.775Z",
+                "type": "HOLD_RELEASE",
+                "date": "2024-04-15",
+                "description": "Test transaction #4",
+                "amount_in_cents": 123
+            },
+            {
+                "id": "cdb58a18-30d7-454f-bd06-cce986189545",
+                "created_at": "2024-04-14T06:15:57.775Z",
+                "updated_at": "2024-04-14T06:15:57.775Z",
+                "type": "HOLD",
+                "date": "2024-04-14",
+                "description": "Test transaction #3",
+                "amount_in_cents": -123
+            },
+            {
+                "id": "6c69f45e-9ed5-447d-afff-34fd475b335b",
+                "created_at": "2024-04-13T06:15:57.775Z",
+                "updated_at": "2024-04-13T06:15:57.775Z",
+                "type": "WITHDRAWAL",
+                "date": "2024-04-13",
+                "description": "Test transaction #2",
+                "amount_in_cents": -123456
+            },
+            {
+                "id": "9083dc38-f6ca-4e79-9e2a-2a5beb046db1",
+                "created_at": "2024-04-12T06:15:57.775Z",
+                "updated_bt": "2024-04-12T06:15:57.775Z",
+                "type": "DEPOSIT",
+                "date": "2024-04-12",
+                "description": "Test transaction #1",
+                "amount_in_cents": 100000
+            }
+        ]
+    },
+    "request_id": "7a6e2a0f-9335-4533-ac0d-3c122e6633a1"
+}
 ```
 
 💡 All debits have `amount_in_cents < 0` and credits have `amount_in_cents >= 0`
@@ -108,38 +189,37 @@ Get an account owner’s transactions.
 
 ### Core
 
-| Name | HEX |
-| --- | --- |
-| Primary | #033AFC |
+| Name      | HEX     |
+| --------- | ------- |
+| Primary   | #033AFC |
 | Secondary | #24305B |
 
 ### Shades
 
-| Name | HEX |
-| --- | --- |
-| White | #FFFFFF |
-| Black | #000000 |
-| Dark Grey | #5E5E5E |
+| Name       | HEX     |
+| ---------- | ------- |
+| White      | #FFFFFF |
+| Black      | #000000 |
+| Dark Grey  | #5E5E5E |
 | Light Grey | #CFCFCF |
 
 ### Warning Colors
 
-| Name | HEX |
-| --- | --- |
-| Red | #C44E42 |
+| Name   | HEX     |
+| ------ | ------- |
+| Red    | #C44E42 |
 | Yellow | #FFCF20 |
-| Green | #608D64 |
+| Green  | #608D64 |
 
 ### Fonts
 
-| Type | Size | Weight |
-| --- | --- | --- |
-| H1 | 48 | Bold |
-| H2 | 38 | Bold |
-| H3 | 30 | Bold |
-| Body | 16 | Regular |
-| Label | 14 | Light |
-| Info | 12 | Light |
+| Type  | Size | Weight  |
+| ----- | ---- | ------- |
+| H1    | 48   | Bold    |
+| H2    | 38   | Bold    |
+| H3    | 30   | Bold    |
+| Body  | 16   | Regular |
+| Label | 14   | Light   |
+| Info  | 12   | Light   |
 
-*font-family: Montserrat*
-
+_font-family: Montserrat_
