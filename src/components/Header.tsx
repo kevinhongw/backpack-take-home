@@ -6,15 +6,13 @@ type Props = {}
 
 const Header: React.FC<Props> = () => {
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ backgroundColor: "#fff" }}>
-        <Container maxWidth="lg">
-          <Toolbar disableGutters>
-            <Box component="img" src={Logo} height="100%" />
-          </Toolbar>
-        </Container>
-      </AppBar>
-    </Box>
+    <AppBar position="static" sx={{ backgroundColor: "#fff" }}>
+      <Container maxWidth="lg">
+        <Toolbar disableGutters>
+          <Box component="img" src={Logo} height="100%" />
+        </Toolbar>
+      </Container>
+    </AppBar>
   )
 }
 

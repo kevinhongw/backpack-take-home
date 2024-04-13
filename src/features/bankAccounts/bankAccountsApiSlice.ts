@@ -42,26 +42,30 @@ export const bankAccountsApiSlice = createApi({
   tagTypes: ["BankAccounts"],
   endpoints: build => ({
     getBankAccounts: build.query<BankAccount[], void>({
-      query: () => ({ url: `/bank-accounts` }),
-      transformResponse: (response: {
-        data: BackPackApiResponse<"bank_accounts", BankAccount[]>
-      }) => response.data.data.bank_accounts,
+      query: () => `/bank-accounts`,
+      transformResponse: (
+        response: BackPackApiResponse<"bank_accounts", BankAccount[]>,
+      ) => {
+        console.log(response)
+        return response.data.bank_accounts
+      },
     }),
     getBankAccountBalance: build.query<BankAccountBalance, string>({
-      query: bankAccountId => ({
-        url: `/bank-accounts/${bankAccountId}/balance`,
-      }),
-      transformResponse: (response: {
-        data: BackPackApiResponse<"bank_account_balance", BankAccountBalance>
-      }) => response.data.data.bank_account_balance,
+      query: bankAccountId => `/bank-accounts/${bankAccountId}/balance`,
+      transformResponse: (
+        response: BackPackApiResponse<
+          "bank_account_balance",
+          BankAccountBalance
+        >,
+      ) => response.data.bank_account_balance,
     }),
     getTransactions: build.query<Transaction[], string>({
       // API design should include bank account id
       // /bank-accounts/${bankAccountId}/transactions
-      query: _bankAccountId => ({ url: `/bank-accounts` }),
-      transformResponse: (response: {
-        data: BackPackApiResponse<"transactions", Transaction[]>
-      }) => response.data.data.transactions,
+      query: _bankAccountId => `/transactions`,
+      transformResponse: (
+        response: BackPackApiResponse<"transactions", Transaction[]>,
+      ) => response.data.transactions,
     }),
   }),
 })

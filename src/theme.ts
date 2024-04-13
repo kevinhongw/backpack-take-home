@@ -32,38 +32,69 @@ export const theme = createTheme({
     fontSize: 16,
     h1: {
       fontSize: "48px",
-      fontWeight: "500",
+      fontWeight: "700",
     },
     h2: {
       fontSize: "38px",
-      fontWeight: "500",
+      fontWeight: "700",
     },
     h3: {
       fontSize: "30px",
-      fontWeight: "500",
+      fontWeight: "700",
+    },
+    h4: {
+      fontSize: "30px",
+      fontWeight: "400",
+    },
+    h5: {
+      fontSize: "24px",
+      fontWeight: "400",
+    },
+    h6: {
+      fontSize: "20px",
+      fontWeight: "400",
+    },
+    subtitle1: {
+      fontSize: "16px",
+      fontWeight: "400",
+      color: "#333",
     },
     label: {
+      // fontFamily: "Montserrat_",
       fontSize: "14px",
       fontWeight: "300",
     },
+    label2: {
+      // fontFamily: "Montserrat_",
+      fontSize: "14px",
+      fontWeight: "700",
+    },
     info: {
+      // fontFamily: "Montserrat_",
       fontSize: "12px",
       fontWeight: "300",
     },
-    fontFamily: "Montserrat_",
+    // fontFamily: "Montserrat_",
   },
 })
 
 declare module "@mui/material/styles" {
+  interface Theme {
+    typography: {
+      label: string
+    }
+  }
   interface TypographyVariants {
     label: React.CSSProperties
     info: React.CSSProperties
+    label2: React.CSSProperties
   }
 
   // allow configuration using `createTheme`
   interface TypographyVariantsOptions {
     label?: React.CSSProperties
     info: React.CSSProperties
+    label2?: React.CSSProperties
   }
 }
 
@@ -72,5 +103,6 @@ declare module "@mui/material/Typography" {
   interface TypographyPropsVariantOverrides {
     label: true
     info: true
+    label2: true
   }
 }
