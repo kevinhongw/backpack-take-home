@@ -7,7 +7,7 @@ type Props = {}
 const Header: React.FC<Props> = () => {
   return (
     <AppBar position="static" sx={{ backgroundColor: "#fff" }}>
-      <Container maxWidth="lg">
+      <Container maxWidth="md">
         <Toolbar disableGutters>
           <Box component="img" src={Logo} height="100%" />
         </Toolbar>
