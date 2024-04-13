@@ -62,9 +62,7 @@ const filterTransaction = (
 }
 
 const BankAccountTransactions: React.FC<Props> = ({ bankAccountId }) => {
-  const { data: transactions = [], isFetching } = useGetTransactionsQuery(
-    bankAccountId ?? skipToken,
-  )
+  const { data: transactions = [], isFetching } = useGetTransactionsQuery()
   const [filter, setFilter] = useState<Filter>({})
   const [search, setSearch] = useState<string>("")
 

@@ -56,7 +56,7 @@ export const bankAccountsApiSlice = createApi({
         >,
       ) => response.data.bank_account_balance,
     }),
-    getTransactions: build.query<Transaction[], string>({
+    getTransactions: build.query<Transaction[], string | void>({
       // API design should include bank account id
       // /bank-accounts/${bankAccountId}/transactions
       query: _bankAccountId => `/transactions`,
