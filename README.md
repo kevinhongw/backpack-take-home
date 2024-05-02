@@ -12,18 +12,18 @@ Please create a separate repository for this prompt and commit your work as you 
 
 ## Requirements
 
-- [ ] UI for displaying, concealing, and copying account and routing numbers
-- [ ] UI for displaying the current and available balance
-- [ ] UI for displaying transactions
-- [ ] `README` explaining your design choices and how to run the application
+- [x] UI for displaying, concealing, and copying account and routing numbers
+- [x] UI for displaying the current and available balance
+- [x] UI for displaying transactions
+- [x] `README` explaining your design choices and how to run the application
 
 ## Extras
 
-- [ ] Reusable components
-- [ ] Polished UI and styling
-- [ ] Filter and search for transactions
-- [ ] Mobile friendly
-- [ ] Tests
+- [x] Reusable components
+- [x] Polished UI and styling
+- [x] Filter and search for transactions
+- [x] Mobile friendly
+- [x] Tests
 
 ## Stack
 
